@@ -7,6 +7,7 @@ import { Hero } from '@/components/hero'
 import { Features } from '@/components/features'
 import { FAQ } from '@/components/faq'
 import { Footer } from '@/components/footer'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const tools = [
   {
@@ -117,10 +118,15 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
 
-        {/* Search and Tools Section */}
-        <section id="tools" className="py-24 sm:py-32 bg-secondary/10">
+        <section id="tools" className="py-24 sm:py-32 bg-secondary/10 overflow-hidden">
           <div className="container mx-auto px-4 sm:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+            <motion.div
+              className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="max-w-2xl">
                 <h2 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Toolkit</h2>
                 <h3 className="text-3xl sm:text-5xl font-bold text-foreground mb-6">
@@ -137,26 +143,40 @@ export default function Home() {
                   className="h-14 w-full bg-card border border-border rounded-2xl pl-12 pr-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-all shadow-sm"
                 />
               </div>
-            </div>
+            </motion.div>
 
-            {search ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                {filteredTools.map((tool) => (
-                  <ToolCard
-                    key={tool.id}
-                    tool={tool}
-                    isFavorite={favorites.includes(tool.id)}
-                    onFavorite={handleFavorite}
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="space-y-24">
-                <ToolGroup title="Creative Design" tools={creativeTools} favorites={favorites} onFavorite={handleFavorite} />
-                <ToolGroup title="Utility & File Management" tools={utilityTools} favorites={favorites} onFavorite={handleFavorite} />
-                <ToolGroup title="Performance & Optimization" tools={performanceTools} favorites={favorites} onFavorite={handleFavorite} />
-              </div>
-            )}
+            <AnimatePresence mode="wait">
+              {search ? (
+                <motion.div
+                  key="search-results"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+                >
+                  {filteredTools.map((tool) => (
+                    <ToolCard
+                      key={tool.id}
+                      tool={tool}
+                      isFavorite={favorites.includes(tool.id)}
+                      onFavorite={handleFavorite}
+                    />
+                  ))}
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="categories"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="space-y-24"
+                >
+                  <ToolGroup title="Creative Design" tools={creativeTools} favorites={favorites} onFavorite={handleFavorite} />
+                  <ToolGroup title="Utility & File Management" tools={utilityTools} favorites={favorites} onFavorite={handleFavorite} />
+                  <ToolGroup title="Performance & Optimization" tools={performanceTools} favorites={favorites} onFavorite={handleFavorite} />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </section>
 
@@ -171,28 +191,40 @@ export default function Home() {
 function ToolGroup({ title, tools, favorites, onFavorite }: { title: string, tools: any[], favorites: number[], onFavorite: (id: number) => void }) {
   if (tools.length === 0) return null
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
       <h4 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2">
         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         {title}
       </h4>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        {tools.map((tool) => (
+        {tools.map((tool, index) => (
           <ToolCard
             key={tool.id}
             tool={tool}
+            index={index}
             isFavorite={favorites.includes(tool.id)}
             onFavorite={onFavorite}
           />
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 
-function ToolCard({ tool, isFavorite, onFavorite }: { tool: any, isFavorite: boolean, onFavorite: (id: number) => void }) {
+function ToolCard({ tool, isFavorite, onFavorite, index = 0 }: { tool: any, isFavorite: boolean, onFavorite: (id: number) => void, index?: number }) {
   return (
-    <div className="group relative p-6 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all hover:-translate-y-1 shadow-sm">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      className="group relative p-6 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all hover:-translate-y-1 shadow-sm"
+    >
       <div className="flex items-start justify-between mb-6">
         <div className="h-16 w-16 rounded-2xl bg-secondary flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
           {tool.icon}
@@ -221,6 +253,6 @@ function ToolCard({ tool, isFavorite, onFavorite }: { tool: any, isFavorite: boo
           <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
         </a>
       </div>
-    </div>
+    </motion.div>
   )
 }
