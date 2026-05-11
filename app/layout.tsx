@@ -7,9 +7,22 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'OmniTools Workspace - Unified Productivity Platform',
-  description: 'Your all-in-one toolkit for enhanced productivity. Seamlessly integrate and manage your favorite productivity tools in one centralized workspace.',
+  title: 'Voidesk — The Unified Productivity Workspace',
+  description: 'Your all-in-one toolkit for peak performance. Seamlessly integrate and manage your favorite productivity tools in one centralized, high-performance workspace.',
   generator: 'v0.app',
+  openGraph: {
+    title: 'Voidesk — The Unified Productivity Workspace',
+    description: 'All your favorite productivity tools in one seamless dashboard.',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://voidesk.netlify.app/',
+    siteName: 'Voidesk',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Voidesk — The Unified Productivity Workspace',
+    description: 'All your favorite productivity tools in one seamless dashboard.',
+  },
   icons: {
     icon: [
       {
