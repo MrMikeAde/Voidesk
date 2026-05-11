@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Sun, Moon, Menu, X } from 'lucide-react'
+import { Sun, Moon, Menu, X, Github } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -15,9 +15,9 @@ export function Navbar() {
   useEffect(() => setMounted(true), [])
 
   const navLinks = [
-    { name: 'Features', href: '/#features' },
-    { name: 'Tools', href: '/#tools' },
-    { name: 'FAQ', href: '/#faq' },
+    { name: 'Features', href: '/features' },
+    { name: 'Tools', href: '/tools' },
+    { name: 'FAQ', href: '/faq' },
   ]
 
   return (
@@ -27,7 +27,7 @@ export function Navbar() {
           <div className="h-8 w-8 rounded-lg bg-primary shrink-0 overflow-hidden">
             <img src="/icon.ico" alt="Logo" className="w-full h-full object-cover" />
           </div>
-          <span className="text-xl font-bold tracking-tight text-foreground">@mrmikeade</span>
+          <span className="text-xl font-bold tracking-tight text-foreground">VoiDesk</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -52,8 +52,10 @@ export function Navbar() {
             {mounted && (theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
           </button>
 
-          <Button asChild size="sm" className="hidden sm:flex rounded-xl">
-             <Link href="https://github.com/MrMikeAde" target="_blank" rel="noopener noreferrer">Github</Link>
+          <Button asChild variant="ghost" size="icon" className="hidden sm:flex rounded-xl">
+             <Link href="https://github.com/MrMikeAde" target="_blank" rel="noopener noreferrer">
+              <Github className="h-5 w-5" />
+             </Link>
           </Button>
 
           <button
@@ -85,8 +87,11 @@ export function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Button asChild className="w-full h-12 rounded-xl mt-2">
-                <Link href="https://github.com/MrMikeAde" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>Github</Link>
+              <Button asChild variant="outline" className="w-full h-12 rounded-xl mt-2">
+                <Link href="https://github.com/MrMikeAde" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>
+                  <Github className="h-5 w-5 mr-2" />
+                  Github
+                </Link>
               </Button>
             </div>
           </motion.div>

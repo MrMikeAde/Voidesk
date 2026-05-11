@@ -23,28 +23,28 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "@mrmikeade | The Professional Toolkit Discovery Hub",
-  description: "Curated, high-performance web utilities for developers, designers, and creators. @mrmikeade centralizes the world's best productivity tools in one seamless dashboard.",
+  title: "VoiDesk | The Professional Toolkit Discovery Hub",
+  description: "Curated, high-performance web utilities for developers, designers, and creators. VoiDesk centralizes the world's best productivity tools in one seamless dashboard.",
   keywords: ["productivity tools", "web utilities", "developer toolkit", "design resources", "online converters", "performance tools", "curated tools"],
-  authors: [{ name: "@mrmikeade" }],
-  creator: "@mrmikeade",
-  publisher: "@mrmikeade",
+  authors: [{ name: "VoiDesk" }],
+  creator: "VoiDesk",
+  publisher: "VoiDesk",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "@mrmikeade | The Professional Toolkit Discovery Hub",
+    title: "VoiDesk | The Professional Toolkit Discovery Hub",
     description: "The unified productivity workspace for peak performance. All your tools in one seamless dashboard.",
     url: "https://voidesk.netlify.app",
-    siteName: "@mrmikeade",
+    siteName: "VoiDesk",
     images: [
       {
         url: "https://voidesk.netlify.app/og-image.png",
         width: 1200,
         height: 630,
-        alt: "@mrmikeade - Productivity Toolkit",
+        alt: "VoiDesk - Productivity Toolkit",
       },
     ],
     locale: "en_US",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "@mrmikeade | The Professional Toolkit Discovery Hub",
+    title: "VoiDesk | The Professional Toolkit Discovery Hub",
     description: "Stop hunting, start shipping. The ultimate discovery hub for productivity tools.",
     images: ["https://voidesk.netlify.app/og-image.png"],
   },

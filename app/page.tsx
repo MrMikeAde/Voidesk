@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { Search, Bookmark, ExternalLink } from 'lucide-react'
 import { Navbar } from '@/components/navbar'
 import { Hero } from '@/components/hero'
@@ -13,88 +14,101 @@ const tools = [
   {
     id: 1,
     name: 'iLovePDF',
-    description: 'Comprehensive PDF tools for editing, converting, and managing documents.',
+    description: 'Powerful PDF editor and converter.',
     url: 'https://www.ilovepdf.com',
-    icon: '📄',
+    logo: 'https://www.google.com/s2/favicons?domain=ilovepdf.com&sz=128',
     category: 'Utility',
   },
   {
     id: 2,
     name: 'Canva',
-    description: 'The leading design platform for graphics, presentations, and social media.',
+    description: 'Professional graphic design made easy.',
     url: 'https://www.canva.com',
-    icon: '🎨',
+    logo: 'https://www.google.com/s2/favicons?domain=canva.com&sz=128',
     category: 'Creative',
   },
   {
     id: 3,
     name: 'Remove.bg',
-    description: 'AI-powered tool to remove image backgrounds with a single click.',
+    description: 'Instant AI background removal.',
     url: 'https://www.remove.bg',
-    icon: '✂️',
+    logo: 'https://www.google.com/s2/favicons?domain=remove.bg&sz=128',
     category: 'Creative',
   },
   {
     id: 4,
     name: 'TinyPNG',
-    description: 'Advanced lossy compression for PNG and JPG images to optimize speed.',
+    description: 'Smart image compression for speed.',
     url: 'https://tinypng.com',
-    icon: '🖼️',
+    logo: 'https://www.google.com/s2/favicons?domain=tinypng.com&sz=128',
     category: 'Creative',
   },
   {
     id: 5,
     name: 'CloudConvert',
-    description: 'Universal file converter supporting nearly all audio, video, and document formats.',
+    description: 'The ultimate file conversion tool.',
     url: 'https://cloudconvert.com',
-    icon: '🔄',
+    logo: 'https://www.google.com/s2/favicons?domain=cloudconvert.com&sz=128',
     category: 'Utility',
   },
   {
     id: 6,
     name: 'Grammarly',
-    description: 'AI writing assistant for grammar, clarity, and tone improvements.',
+    description: 'AI-powered writing and grammar assistant.',
     url: 'https://www.grammarly.com',
-    icon: '✍️',
+    logo: 'https://www.google.com/s2/favicons?domain=grammarly.com&sz=128',
     category: 'Performance',
   },
   {
     id: 7,
     name: 'Photopea',
-    description: 'A powerful web-based alternative to Adobe Photoshop for advanced editing.',
+    description: 'Advanced browser-based photo editor.',
     url: 'https://www.photopea.com',
-    icon: '🎨',
+    logo: 'https://www.google.com/s2/favicons?domain=photopea.com&sz=128',
     category: 'Creative',
   },
   {
     id: 8,
     name: 'GTmetrix',
-    description: 'Detailed website performance analysis and speed optimization reports.',
+    description: 'Deep website speed and performance analysis.',
     url: 'https://gtmetrix.com',
-    icon: '⚡',
+    logo: 'https://www.google.com/s2/favicons?domain=gtmetrix.com&sz=128',
     category: 'Performance',
   },
   {
     id: 9,
     name: 'Temp Mail',
-    description: 'Disposable temporary email addresses to protect your privacy and reduce spam.',
+    description: 'Disposable email for privacy and security.',
     url: 'https://temp-mail.org',
-    icon: '📧',
+    logo: 'https://www.google.com/s2/favicons?domain=temp-mail.org&sz=128',
     category: 'Utility',
   },
   {
     id: 10,
     name: 'Speedtest',
-    description: 'Reliable internet connection speed testing for global performance metrics.',
+    description: 'Global internet speed and quality testing.',
     url: 'https://www.speedtest.net',
-    icon: '🚀',
+    logo: 'https://www.google.com/s2/favicons?domain=speedtest.net&sz=128',
     category: 'Performance',
   },
 ]
 
 export default function Home() {
+  const pathname = usePathname()
   const [search, setSearch] = useState('')
   const [favorites, setFavorites] = useState<number[]>([])
+
+  useEffect(() => {
+    const id = pathname.replace('/', '')
+    if (id) {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [pathname])
 
   const filteredTools = tools.filter((tool) =>
     tool.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -226,8 +240,8 @@ function ToolCard({ tool, isFavorite, onFavorite, index = 0 }: { tool: any, isFa
       className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-primary/30 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5"
     >
       <div className="flex items-start justify-between mb-8">
-        <div className="h-20 w-20 rounded-3xl bg-linear-to-br from-secondary/80 to-secondary flex items-center justify-center text-4xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm border border-border/50">
-          {tool.icon}
+        <div className="h-20 w-20 rounded-3xl bg-linear-to-br from-secondary/80 to-secondary flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm border border-border/50 overflow-hidden p-4">
+          <img src={tool.logo} alt={tool.name} className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500" />
         </div>
         <button
           onClick={() => onFavorite(tool.id)}
