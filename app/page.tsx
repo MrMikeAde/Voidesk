@@ -12,7 +12,7 @@ const tools = [
   {
     id: 1,
     name: 'iLovePDF',
-    description: 'PDF tools & editor',
+    description: 'Comprehensive PDF tools for editing, converting, and managing documents.',
     url: 'https://www.ilovepdf.com',
     icon: '📄',
     category: 'Utility',
@@ -20,7 +20,7 @@ const tools = [
   {
     id: 2,
     name: 'Canva',
-    description: 'Design & graphics',
+    description: 'The leading design platform for graphics, presentations, and social media.',
     url: 'https://www.canva.com',
     icon: '🎨',
     category: 'Creative',
@@ -28,7 +28,7 @@ const tools = [
   {
     id: 3,
     name: 'Remove.bg',
-    description: 'Remove backgrounds',
+    description: 'AI-powered tool to remove image backgrounds with a single click.',
     url: 'https://www.remove.bg',
     icon: '✂️',
     category: 'Creative',
@@ -36,7 +36,7 @@ const tools = [
   {
     id: 4,
     name: 'TinyPNG',
-    description: 'Image compression',
+    description: 'Advanced lossy compression for PNG and JPG images to optimize speed.',
     url: 'https://tinypng.com',
     icon: '🖼️',
     category: 'Creative',
@@ -44,7 +44,7 @@ const tools = [
   {
     id: 5,
     name: 'CloudConvert',
-    description: 'File converter',
+    description: 'Universal file converter supporting nearly all audio, video, and document formats.',
     url: 'https://cloudconvert.com',
     icon: '🔄',
     category: 'Utility',
@@ -52,7 +52,7 @@ const tools = [
   {
     id: 6,
     name: 'Grammarly',
-    description: 'Writing assistant',
+    description: 'AI writing assistant for grammar, clarity, and tone improvements.',
     url: 'https://www.grammarly.com',
     icon: '✍️',
     category: 'Performance',
@@ -60,7 +60,7 @@ const tools = [
   {
     id: 7,
     name: 'Photopea',
-    description: 'Photo editor',
+    description: 'A powerful web-based alternative to Adobe Photoshop for advanced editing.',
     url: 'https://www.photopea.com',
     icon: '🎨',
     category: 'Creative',
@@ -68,7 +68,7 @@ const tools = [
   {
     id: 8,
     name: 'GTmetrix',
-    description: 'Website performance',
+    description: 'Detailed website performance analysis and speed optimization reports.',
     url: 'https://gtmetrix.com',
     icon: '⚡',
     category: 'Performance',
@@ -76,7 +76,7 @@ const tools = [
   {
     id: 9,
     name: 'Temp Mail',
-    description: 'Temporary email',
+    description: 'Disposable temporary email addresses to protect your privacy and reduce spam.',
     url: 'https://temp-mail.org',
     icon: '📧',
     category: 'Utility',
@@ -84,7 +84,7 @@ const tools = [
   {
     id: 10,
     name: 'Speedtest',
-    description: 'Internet speed test',
+    description: 'Reliable internet connection speed testing for global performance metrics.',
     url: 'https://www.speedtest.net',
     icon: '🚀',
     category: 'Performance',
@@ -118,13 +118,13 @@ export default function Home() {
         <Hero />
 
         {/* Search and Tools Section */}
-        <section id="tools" className="py-24 sm:py-32 bg-white/[0.02]">
+        <section id="tools" className="py-24 sm:py-32 bg-secondary/10">
           <div className="container mx-auto px-4 sm:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
               <div className="max-w-2xl">
-                <h2 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Discovery</h2>
-                <h3 className="text-3xl sm:text-5xl font-bold text-white mb-6">
-                  Explore our premium toolkit.
+                <h2 className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">Toolkit</h2>
+                <h3 className="text-3xl sm:text-5xl font-bold text-foreground mb-6">
+                  Professionally curated web utilities.
                 </h3>
               </div>
               <div className="relative w-full max-w-md">
@@ -134,7 +134,7 @@ export default function Home() {
                   placeholder="Search tools or categories..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="h-14 w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 text-white placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-all"
+                  className="h-14 w-full bg-card border border-border rounded-2xl pl-12 pr-4 text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none transition-all shadow-sm"
                 />
               </div>
             </div>
@@ -152,9 +152,9 @@ export default function Home() {
               </div>
             ) : (
               <div className="space-y-24">
-                <ToolGroup title="Creative" tools={creativeTools} favorites={favorites} onFavorite={handleFavorite} />
-                <ToolGroup title="Utility" tools={utilityTools} favorites={favorites} onFavorite={handleFavorite} />
-                <ToolGroup title="Performance" tools={performanceTools} favorites={favorites} onFavorite={handleFavorite} />
+                <ToolGroup title="Creative Design" tools={creativeTools} favorites={favorites} onFavorite={handleFavorite} />
+                <ToolGroup title="Utility & File Management" tools={utilityTools} favorites={favorites} onFavorite={handleFavorite} />
+                <ToolGroup title="Performance & Optimization" tools={performanceTools} favorites={favorites} onFavorite={handleFavorite} />
               </div>
             )}
           </div>
@@ -172,7 +172,7 @@ function ToolGroup({ title, tools, favorites, onFavorite }: { title: string, too
   if (tools.length === 0) return null
   return (
     <div>
-      <h4 className="text-xl font-bold text-white mb-8 flex items-center gap-2">
+      <h4 className="text-xl font-bold text-foreground mb-8 flex items-center gap-2">
         <span className="h-1.5 w-1.5 rounded-full bg-primary" />
         {title}
       </h4>
@@ -192,22 +192,22 @@ function ToolGroup({ title, tools, favorites, onFavorite }: { title: string, too
 
 function ToolCard({ tool, isFavorite, onFavorite }: { tool: any, isFavorite: boolean, onFavorite: (id: number) => void }) {
   return (
-    <div className="group relative p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all hover:-translate-y-1">
+    <div className="group relative p-6 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all hover:-translate-y-1 shadow-sm">
       <div className="flex items-start justify-between mb-6">
-        <div className="h-16 w-16 rounded-2xl bg-white/5 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+        <div className="h-16 w-16 rounded-2xl bg-secondary flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
           {tool.icon}
         </div>
         <button
           onClick={() => onFavorite(tool.id)}
           className={`p-2 rounded-xl transition-colors ${
-            isFavorite ? 'bg-primary text-primary-foreground' : 'bg-white/5 text-muted-foreground hover:bg-white/10'
+            isFavorite ? 'bg-primary text-primary-foreground' : 'bg-secondary text-muted-foreground hover:bg-primary/20 hover:text-primary'
           }`}
         >
           <Bookmark className="h-4 w-4" fill={isFavorite ? 'currentColor' : 'none'} />
         </button>
       </div>
       <div>
-        <h5 className="font-bold text-white mb-2">{tool.name}</h5>
+        <h5 className="font-bold text-foreground mb-2">{tool.name}</h5>
         <p className="text-sm text-muted-foreground mb-6 line-clamp-2">
           {tool.description}
         </p>
@@ -215,7 +215,7 @@ function ToolCard({ tool, isFavorite, onFavorite }: { tool: any, isFavorite: boo
           href={tool.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-sm font-medium text-white hover:text-primary transition-colors group/link"
+          className="inline-flex items-center text-sm font-medium text-primary hover:underline transition-all group/link"
         >
           Launch Tool
           <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
