@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Github } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -50,19 +50,20 @@ export function Hero() {
           </motion.h1>
 
           <motion.p variants={itemVariants} className="text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed">
-            The professional discovery hub for high-performance productivity tools. @mrmikeade curates the web's best utilities so you can stop hunting and start shipping.
+            The professional discovery hub for high-performance productivity tools. VoiDesk curates the web's best utilities so you can stop hunting and start shipping.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4">
             <Button asChild size="lg" className="w-full sm:w-auto h-14 px-8 text-base rounded-2xl">
               <Link href="https://github.com/MrMikeAde" target="_blank" rel="noopener noreferrer">
+                <Github className="mr-2 h-5 w-5" />
                 Follow on Github
-                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-14 px-8 text-base rounded-2xl">
-              <Link href="#tools">
+              <Link href="/tools">
                 Explore Tools
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </motion.div>

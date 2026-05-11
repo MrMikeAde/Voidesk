@@ -100,8 +100,8 @@ html {
   body {
     @apply bg-background text-foreground transition-colors duration-300;
     background-image:
-      radial-gradient(at 0% 0%, var(--muted) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, var(--secondary) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, var(--muted) 0%, transparent 50%),
+      radial-gradient(at 100% 0%, var(--secondary) 0%, transparent 50%);
     background-attachment: fixed;
   }
 }

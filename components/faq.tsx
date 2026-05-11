@@ -10,7 +10,7 @@ import { motion } from "framer-motion"
 
 const faqs = [
   {
-    question: "What exactly is @mrmikeade's toolkit?",
+    question: "What exactly is VoiDesk?",
     answer: "It's a professional discovery hub that curates and centralizes the web's best productivity tools. Instead of maintaining hundreds of bookmarks, you can use this platform as your primary dashboard to find and launch utilities instantly."
   },
   {
@@ -29,7 +29,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-24 sm:py-32">
+    <section id="faq" className="py-24 sm:py-32 scroll-mt-16">
       <div className="container mx-auto px-4 sm:px-8">
         <div className="max-w-3xl mx-auto">
           <motion.div
