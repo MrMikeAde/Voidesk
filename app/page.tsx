@@ -223,34 +223,40 @@ function ToolCard({ tool, isFavorite, onFavorite, index = 0 }: { tool: any, isFa
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className="group relative p-6 rounded-3xl bg-card border border-border hover:border-primary/50 transition-all hover:-translate-y-1 shadow-sm"
+      className="group relative p-8 rounded-[2rem] bg-card border border-border hover:border-primary/30 transition-all hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5"
     >
-      <div className="flex items-start justify-between mb-6">
-        <div className="h-16 w-16 rounded-2xl bg-secondary flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+      <div className="flex items-start justify-between mb-8">
+        <div className="h-20 w-20 rounded-3xl bg-linear-to-br from-secondary/80 to-secondary flex items-center justify-center text-4xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm border border-border/50">
           {tool.icon}
         </div>
         <button
           onClick={() => onFavorite(tool.id)}
-          className={`p-2 rounded-xl transition-colors ${
-            isFavorite ? 'bg-primary text-primary-foreground' : 'bg-secondary text-muted-foreground hover:bg-primary/20 hover:text-primary'
+          className={`p-2.5 rounded-2xl transition-all duration-300 ${
+            isFavorite ? 'bg-primary text-primary-foreground scale-110 shadow-lg' : 'bg-secondary/50 text-muted-foreground hover:bg-primary/10 hover:text-primary hover:scale-110'
           }`}
         >
-          <Bookmark className="h-4 w-4" fill={isFavorite ? 'currentColor' : 'none'} />
+          <Bookmark className="h-5 w-5" fill={isFavorite ? 'currentColor' : 'none'} />
         </button>
       </div>
       <div>
-        <h5 className="font-bold text-foreground mb-2">{tool.name}</h5>
-        <p className="text-sm text-muted-foreground mb-6 line-clamp-2">
+        <div className="mb-4">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-primary/60 bg-primary/5 px-2.5 py-1 rounded-full border border-primary/10">
+            {tool.category}
+          </span>
+        </div>
+        <h5 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{tool.name}</h5>
+        <p className="text-sm text-muted-foreground mb-8 line-clamp-2 leading-relaxed">
           {tool.description}
         </p>
         <a
           href={tool.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-sm font-medium text-primary hover:underline transition-all group/link"
+          className="inline-flex items-center text-sm font-bold text-primary transition-all group/link relative"
         >
-          Launch Tool
-          <ExternalLink className="ml-2 h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+          <span className="relative z-10">Launch Tool</span>
+          <ExternalLink className="ml-2 h-4 w-4 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all duration-300" />
+          <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover/link:w-full" />
         </a>
       </div>
     </motion.div>
