@@ -4,41 +4,70 @@ import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 export function Hero() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  }
+
   return (
-    <section className="relative pt-24 pb-12 overflow-hidden sm:pt-32 sm:pb-24">
-      <div className="container mx-auto px-4 sm:px-8 text-center sm:text-left">
-        <div className="max-w-4xl mx-auto sm:mx-0">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary border border-border text-sm font-medium text-primary mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+    <section className="relative pt-24 pb-12 overflow-hidden sm:pt-40 sm:pb-32">
+      <div className="container mx-auto px-4 sm:px-8">
+        <motion.div
+          className="max-w-4xl"
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+        >
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-border text-sm font-medium text-primary mb-8 backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
-            Verified Toolkit v2.0
-          </div>
-          <h1 className="text-5xl sm:text-7xl font-bold tracking-tight text-foreground mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
-            All your tools. <br />
-            <span className="text-muted-foreground">One seamless dashboard.</span>
-          </h1>
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300 mx-auto sm:mx-0">
-            The professional discovery hub for high-performance productivity tools. Voidesk curates and centralizes the best web utilities so you can stop hunting and start shipping.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-400 justify-center sm:justify-start">
+            Professional Toolkit v2.0
+          </motion.div>
+
+          <motion.h1 variants={itemVariants} className="text-5xl sm:text-8xl font-bold tracking-tight text-foreground mb-8 leading-[1.1]">
+            Curated tools for <br />
+            <span className="text-muted-foreground/60">peak productivity.</span>
+          </motion.h1>
+
+          <motion.p variants={itemVariants} className="text-xl text-muted-foreground mb-12 max-w-2xl leading-relaxed">
+            The professional discovery hub for high-performance productivity tools. Voidesk curates the web's best utilities so you can stop hunting and start shipping.
+          </motion.p>
+
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center gap-4">
             <Button asChild size="lg" className="w-full sm:w-auto h-14 px-8 text-base rounded-2xl">
               <Link href="#tools">
                 Explore the Toolkit
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="mt-16 flex flex-col sm:flex-row items-center gap-4 animate-in fade-in duration-1000 delay-500 justify-center sm:justify-start">
+          <motion.div variants={itemVariants} className="mt-16 flex items-center gap-4">
             <div className="flex -space-x-3">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-10 w-10 rounded-full border-2 border-background bg-secondary flex items-center justify-center text-xs font-bold text-foreground overflow-hidden relative">
+                <div key={i} className="h-10 w-10 rounded-full border-2 border-background bg-secondary flex items-center justify-center overflow-hidden relative">
                    <Image
-                     src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 20}`}
+                     src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i + 25}`}
                      alt="Avatar"
                      fill
                      className="object-cover"
@@ -48,14 +77,19 @@ export function Hero() {
             </div>
             <div className="text-sm">
               <span className="font-bold text-foreground">5,000+</span>
-              <span className="text-muted-foreground ml-1">users optimized their daily workflow</span>
+              <span className="text-muted-foreground ml-1">users optimized their workflow</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Decorative background element */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-primary/10 blur-[120px] rounded-full -z-10 opacity-30" />
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 0.3, scale: 1 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        className="absolute top-1/2 right-0 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[140px] rounded-full -z-10"
+      />
     </section>
   )
 }
