@@ -24,8 +24,10 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/60 backdrop-blur-xl">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-8">
         <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity relative z-50">
-          <div className="h-8 w-8 rounded-lg bg-primary shrink-0" />
-          <span className="text-xl font-bold tracking-tight text-foreground">Voidesk</span>
+          <div className="h-8 w-8 rounded-lg bg-primary shrink-0 overflow-hidden">
+            <img src="/icon.ico" alt="Logo" className="w-full h-full object-cover" />
+          </div>
+          <span className="text-xl font-bold tracking-tight text-foreground">@mrmikeade</span>
         </Link>
 
         {/* Desktop Nav */}
@@ -51,7 +53,7 @@ export function Navbar() {
           </button>
 
           <Button asChild size="sm" className="hidden sm:flex rounded-xl">
-             <Link href="/#tools">Get Started</Link>
+             <Link href="https://github.com/MrMikeAde" target="_blank" rel="noopener noreferrer">Github</Link>
           </Button>
 
           <button
@@ -84,7 +86,7 @@ export function Navbar() {
                 </Link>
               ))}
               <Button asChild className="w-full h-12 rounded-xl mt-2">
-                <Link href="/#tools" onClick={() => setMobileMenuOpen(false)}>Get Started</Link>
+                <Link href="https://github.com/MrMikeAde" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>Github</Link>
               </Button>
             </div>
           </motion.div>

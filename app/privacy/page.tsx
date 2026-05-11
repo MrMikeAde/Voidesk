@@ -10,17 +10,17 @@ export default function PrivacyPage() {
           <h1 className="text-4xl sm:text-6xl font-bold text-foreground mb-8">Privacy Policy</h1>
           <div className="prose prose-slate dark:prose-invert max-w-none space-y-6 text-muted-foreground leading-relaxed">
             <p className="text-lg">
-              At Voidesk, we are committed to protecting your privacy. This policy outlines how we handle your data.
+              We are committed to protecting your privacy. This policy outlines how we handle your data.
             </p>
 
             <h2 className="text-2xl font-bold text-foreground mt-12">1. Data Collection</h2>
             <p>
-              Voidesk is a static directory and discovery hub. We do not require account creation, and we do not collect, store, or process any personal data. We do not use cookies or tracking scripts.
+              This platform is a static directory and discovery hub. We do not require account creation, and we do not collect, store, or process any personal data. We do not use cookies or tracking scripts.
             </p>
 
             <h2 className="text-2xl font-bold text-foreground mt-12">2. Third-Party Links</h2>
             <p>
-              Our website contains links to third-party tools and websites. Once you click on these links, you are leaving Voidesk. We do not have control over these third-party sites and are not responsible for their privacy practices. We encourage you to read the privacy policies of any website you visit.
+              Our website contains links to third-party tools and websites. Once you click on these links, you are leaving our site. We do not have control over these third-party sites and are not responsible for their privacy practices. We encourage you to read the privacy policies of any website you visit.
             </p>
 
             <h2 className="text-2xl font-bold text-foreground mt-12">3. Analytics</h2>
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
 
             <h2 className="text-2xl font-bold text-foreground mt-12">6. Contact Us</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact us at hello@voidesk.netlify.app.
+              If you have any questions about this Privacy Policy, please reach out via GitHub.
             </p>
 
             <p className="pt-12 text-sm">

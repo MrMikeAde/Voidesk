@@ -23,28 +23,28 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Voidesk | The Professional Toolkit Discovery Hub",
-  description: "Curated, high-performance web utilities for developers, designers, and creators. Voidesk centralizes the world's best productivity tools in one seamless dashboard.",
+  title: "@mrmikeade | The Professional Toolkit Discovery Hub",
+  description: "Curated, high-performance web utilities for developers, designers, and creators. @mrmikeade centralizes the world's best productivity tools in one seamless dashboard.",
   keywords: ["productivity tools", "web utilities", "developer toolkit", "design resources", "online converters", "performance tools", "curated tools"],
-  authors: [{ name: "Voidesk Team" }],
-  creator: "Voidesk",
-  publisher: "Voidesk",
+  authors: [{ name: "@mrmikeade" }],
+  creator: "@mrmikeade",
+  publisher: "@mrmikeade",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "Voidesk | The Professional Toolkit Discovery Hub",
+    title: "@mrmikeade | The Professional Toolkit Discovery Hub",
     description: "The unified productivity workspace for peak performance. All your tools in one seamless dashboard.",
     url: "https://voidesk.netlify.app",
-    siteName: "Voidesk",
+    siteName: "@mrmikeade",
     images: [
       {
         url: "https://voidesk.netlify.app/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Voidesk - Productivity Toolkit",
+        alt: "@mrmikeade - Productivity Toolkit",
       },
     ],
     locale: "en_US",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Voidesk | The Professional Toolkit Discovery Hub",
+    title: "@mrmikeade | The Professional Toolkit Discovery Hub",
     description: "Stop hunting, start shipping. The ultimate discovery hub for productivity tools.",
     images: ["https://voidesk.netlify.app/og-image.png"],
   },
