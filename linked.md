@@ -22,4 +22,6 @@ Humbled to be on this journey with all 5,000+ of you who have already "optimized
 
 **Thoughts?** Are you team "Too Many Tabs" or team "Actually Organized"? Let me know in the comments! 👇
 
+P.S. These are tools I use a lot. Can’t find your favorite? There’s a chat box on the page — talk to the bird and we’ll add it 😊 Happy surfing!
+
 #Productivity #SaaS #Innovation #WorkflowOptimization #NextJS #DigitalTransformation #VoiDesk #GrowthMindset
